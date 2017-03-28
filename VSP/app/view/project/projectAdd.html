@@ -1,0 +1,118 @@
+﻿<div class="main-txt">
+    <div class="main-tip">
+        <span class="fa fa-thumb-tack"></span>新增项目(配单)
+    </div>
+    <div class="main-tab">
+        <div class="inputdiv">
+            <div class="col-md-4 col-sm-6 col-xs-12">
+                <label for="">项目名称* ：</label>
+                <input type="text" ng-model="projectAform.name">
+            </div>
+            <div class="col-md-4 col-sm-6 col-xs-12">
+                <label for="">项目负责人* ：</label>
+                <input type="text" ng-model="projectAform.charger">
+            </div>
+        </div>
+        <div class="inputdiv">
+            <div class="col-md-4 col-sm-6 col-xs-12">
+                <label for="">建筑面积* ：</label>
+                <select ng-model="projectAform.area" ng-options="area.ID as area.dictdata_name for area in areaSearchList">
+
+                </select>
+            </div>
+            <div class="col-md-7 col-sm-6 col-xs-12">
+                <label for="">项目地址：</label>
+                <input type="text" ng-model="projectAform.address">
+            </div>
+        </div>
+        <div class="inputdiv">
+            <div class="col-md-4 col-sm-6 col-xs-12">
+                <label for="">城市* ：</label>
+                <select ng-model="projectAform.city" ng-options="city.ID as city.dictdata_name for city in cityList">
+
+                </select>
+            </div>
+            <div class="col-md-4 col-sm-6 col-xs-12">
+                <label for="">项目类型：</label>
+                <select ng-model="projectAform.projectType" ng-options="projectType.ID as projectType.dictdata_name for projectType in ProgmType">
+
+                </select>
+            </div>
+        </div>
+        <div class="inputdiv">
+            <div class="col-md-4 col-sm-6 col-xs-12">
+                <label for="">方案：</label>
+                <select ng-model="projectAform.projectPlan" ng-options="projectPlan.ID as projectPlan.PlanName for projectPlan in planSearchList">
+
+                </select>
+            </div>
+            <div class="col-md-4 col-sm-6 col-xs-12">
+                <label for="">是否默认：</label>
+                <input class="rad" type="radio" name="isdefault"value = '1' checked= checked ng-model="projectAform.iscancel">是
+                <input class="rad" type="radio" name="isdefault" value = '0' ng-model="projectAform.iscancel">否
+            </div>
+        </div>
+        <div class="inputdiv">
+            <div class="col-md-4 col-sm-6 col-xs-12">
+                <label for="">配电房：</label>
+                <select ng-model="projectAform.device1" ng-options="device1.ID as device1.name for device1 in getDevicesTypeList[1]"style="width: 50%;">
+                </select>
+            </div>
+            <div class="col-md-1 col-sm-6 col-xs-12">
+                <label for="" style="width: 70px;margin-left: -55px;">数量：</label>
+                <input type="text" ng-model="projectAform.num1">
+            </div>
+            <div class="col-md-4 col-sm-6 col-xs-12">
+                <label for="">水泵房：</label>
+               <select ng-model="projectAform.device2" ng-options="device2.ID as device2.name for device2 in getDevicesTypeList[2]" style="width: 50%;">
+
+                </select>
+            </div>
+            <div class="col-md-1 col-sm-6 col-xs-12">
+                <label for="" style="width: 70px;margin-left: -55px;">数量：</label>
+                <input type="text" ng-model="projectAform.num2">
+            </div>
+        </div>
+        <div class="inputdiv">
+            <div class="col-md-4 col-sm-6 col-xs-12">
+                <label for="">配电柜：</label>
+                <select ng-model="projectAform.device3" ng-options="device3.ID as device3.name for device3 in getDevicesTypeList[3]" style="width: 50%;">
+
+                </select>
+            </div>
+            <div class="col-md-1 col-sm-6 col-xs-12">
+                <label for="" style="width: 70px;margin-left: -55px;">数量：</label>
+                <input type="text" ng-model="projectAform.num3">
+            </div>
+            <div class="col-md-4 col-sm-6 col-xs-12">
+                <label for="">水泵：</label>
+                <select ng-model="projectAform.device4" ng-options="device4.ID as device4.name for device4 in getDevicesTypeList[4]" style="width: 50%;">
+
+                </select>
+            </div>
+            <div class="col-md-1 col-sm-6 col-xs-12">
+                <label for="" style="width: 70px;margin-left: -55px;">数量：</label>
+                <input type="text" ng-model="projectAform.num4">
+            </div>
+        </div>
+        <div class="inputdiv">
+            <div class="col-md-4 col-sm-6 col-xs-12">
+                <label for="">水池：</label>
+                <select ng-model="projectAform.device5" ng-options="device5.ID as device5.name for device5 in getDevicesTypeList[5]" style="width: 50%;">
+
+                </select>
+            </div>
+            <div class="col-md-1 col-sm-6 col-xs-12">
+                <label for="" style="width: 70px;margin-left: -55px;">数量：</label>
+                <input type="text" ng-model="projectAform.num5">
+            </div>
+        </div>
+        <div class="inputdiv">
+            <div class="col-md-4 col-md-offset-4 ">
+                <button class="mybtn" ng-click="projectAdd()">保存</button>
+            </div>
+
+        </div>
+        
+    </div>
+</div>

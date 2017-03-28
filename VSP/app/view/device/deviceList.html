@@ -1,0 +1,48 @@
+<div class="main-txt">
+    <div class="main-tip">
+        <span class="fa fa-thumb-tack"></span>集成设备列表
+    </div>
+    <div class="main-tab">
+        <div class="addbtn">
+            <button class="mybtn " ui-sref="device.add">新增集成设备</button>
+            <div class="totallDiv pull-right">共 {{deviceList.TotalItems || '0'}} 个设备</div>
+        </div>
+        <table class="mytab table table-striped table-bordered ">
+            <thead>
+            <th>序号</th>
+            <th>设备名称</th>
+            <th>型号</th>
+            <th>类型</th>
+            <th>参数描述</th>
+            <th>是否默认</th>
+            <th>是否停用</th>
+            <th style="width:120px;">操作</th>
+            </thead>
+            <tbody>
+            <tr ng-repeat="device in deviceList.Items track by $index">
+                <td>{{$index + 1}}</td>
+                <td>{{device.name || '-'}}</td>
+                <td>{{device.model || '-'}}</td>
+                <td>{{device.TypeName || '-'}}</td>
+                <td>{{device.desc || '-'}}</td>
+                <td>{{device.isdefault == 1 ? '是' : '否'}}</td>
+                <td>{{device.iscancel == 1 ? '是' : '否'}}</td>
+                <td><a ui-sref="device.update({id:device.ID})">修改</a>&nbsp;&nbsp;
+                    <a ui-sref="device.product({id:device.ID})">关联产品</a>
+                </td>
+            </tr>
+            <tr ng-if="deviceList.TotalItems == 0"><td colspan="8">暂无查询结果</td></tr>
+            </tbody>
+        </table>
+        <page total-page="totalpage" current-page="current_page" get-data="getData()"></page>
+    </div>
+</div>
+<div ng-show="loading" class="loading-box">
+    <div class="spinner">
+        <div class="rect1"></div>
+        <div class="rect2"></div>
+        <div class="rect3"></div>
+        <div class="rect4"></div>
+        <div class="rect5"></div>
+    </div>
+</div>

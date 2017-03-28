@@ -1,0 +1,94 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">  <title>VSP业务技术支持系统</title>
+    <link rel="stylesheet" href="./lib/css/bootstrap.css">
+    <link rel="stylesheet" href="styles/common.css">
+    <link rel="stylesheet" href="../node_modules/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="./lib/js/layer/skin/layer.css">
+    <link rel="stylesheet" href="../node_modules/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css">
+    <!--<link rel="stylesheet" href="./lib/css/bootstrap-datetimepicker.min.css">-->
+    <script src="./lib/js/jquery.min.js"></script>
+    <script src="./lib/js/bootstrap.js"></script>
+    <!--<script src="./lib/js/bootstrap-datetimepicker.min.js"></script>
+    <script src="./lib/js/bootstrap-datetimepicker.zh-CN.js"></script>-->
+    <script src="./lib/js/md5.js"></script>
+    <script src="./lib/js/Base64Helper.js"></script>
+    <style>
+        .authlist .list li.active ul{
+            display: none;
+        }
+        .authlist .list li span{
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body ng-app="vsp" ng-controller="MainController">
+    <ng-tip ></ng-tip>
+    <div ui-view></div>
+</body>
+
+</html>
+
+<script src="./lib/js/angular.min.js"></script>
+<script src="./lib/js/angular-ui-router.js"></script>
+<script src="../node_modules/moment/min/moment.min.js"></script>
+<script src="../node_modules/moment/min/locales.min.js"></script>
+<script src="../node_modules/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js"></script>
+<script src="../node_modules/angular-eonasdan-datetimepicker/dist/angular-eonasdan-datetimepicker.min.js"></script>
+<script src="../node_modules/angular-cookies/angular-cookies.js"></script>
+<script src="../node_modules/ng-file-upload/dist/ng-file-upload.min.js"></script>
+<script src="../node_modules/ng-file-upload/dist/ng-file-upload-shim.min.js"></script>
+<script src="./scripts/app.js"></script>
+<script src="./scripts/directives/baseDirective.js"></script>
+<script src="./scripts/function/rootScopeFun.js"></script>
+<script src="./scripts/function/baseFun.js"></script>
+<script src="./scripts/service/baseService.js"></script>
+<script src="./scripts/function/tip.js"></script>
+<script src="./lib/js/layer/layer.js"></script>
+<script src="./scripts/function/getBaseDateFun.js"></script>
+
+<!--路由-->
+<script src="./scripts/state/userState.js"></script>
+<script src="./scripts/state/roleState.js"></script>
+<script src="./scripts/state/productState.js"></script>
+<script src="./scripts/state/planState.js"></script>
+<script src="./scripts/state/deviceState.js"></script>
+<script src="./scripts/state/projectState.js"></script>
+<script src="./scripts/state/logState.js"></script>
+<!--控制器-->
+<script src="./scripts/controller/user/loginCtrl.js"></script>
+<script src="./scripts/controller/user/userListCtrl.js"></script>
+<script src="./scripts/controller/user/userAddCtrl.js"></script>
+<script src="./scripts/controller/user/userUpdateCtrl.js "></script>
+
+<script src="./scripts/controller/role/roleListCtrl.js"></script>
+<script src="./scripts/controller/role/roleAddCtrl.js"></script>
+<script src="./scripts/controller/role/roleUpdateCtrl.js"></script>
+
+<script src="./scripts/controller/product/productListCtrl.js"></script>
+<script src="./scripts/controller/product/productAddCtrl.js"></script>
+<script src="./scripts/controller/product/productUpdateCtrl.js"></script>
+<script src="./scripts/controller/product/supplierList.js"></script>
+
+<script src="./scripts/controller/plan/planListCtrl.js"></script>
+<script src="./scripts/controller/plan/planAddCtrl.js"></script>
+<script src="./scripts/controller/plan/planUpdateCtrl.js"></script>
+
+<script src="./scripts/controller/device/deviceListCtrl.js"></script>
+<script src="./scripts/controller/device/deviceAddCtrl.js"></script>
+<script src="./scripts/controller/device/deviceUpdateCtrl.js"></script>
+<script src="./scripts/controller/device/getProductCtrl.js"></script>
+
+<script src="./scripts/controller/project/projectListCtrl.js"></script>
+<script src="./scripts/controller/project/projectAddCtrl.js"></script>
+<script src="./scripts/controller/project/projectUpdateCtrl.js"></script>
+<script src="./scripts/controller/project/inventoryCtrl.js"></script>
+
+<script src="./scripts/controller/log/logListCtrl.js"></script>
+
+
+
+

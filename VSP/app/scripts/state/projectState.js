@@ -1,0 +1,34 @@
+/**
+ * Created by zhengam on 2017/2/27.
+ * 描述：项目管理路由
+ */
+stateModule.config(function($stateProvider){
+    $stateProvider
+        .state('project',{
+            url:'/project',
+            templateUrl:'view/user/userIndex.html'
+        })
+        .state('project.list',{
+            url:'/list',
+            templateUrl:'view/project/projectList.html',
+            controller:'ProjectListCtrl'
+        })
+        .state('project.add',{
+            url:'/add',
+            templateUrl:'view/project/projectAdd.html',
+            controller:'ProjectAddCtrl'
+        })
+        .state('project.update',{
+            url:'/update/:id',
+            cache:false,
+            templateUrl:'view/project/projectUpdate.html',
+            controller:'ProjectUpdateCtrl'
+        })
+        .state('project.inventory',{
+            url:'/inventory/:id',
+            cache:false,
+            templateUrl:'view/project/inventory.html',
+            controller:'InventoryCtrl'
+        })
+    ;
+});

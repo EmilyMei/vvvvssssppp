@@ -1,0 +1,94 @@
+<div class="main-txt">
+    <div class="main-tip">
+        <span class="fa fa-thumb-tack"></span>产品列表
+    </div>
+    <div class="main-topnav">
+        <div class="inputdiv">
+            <div class="col-md-4 col-sm-6 col-xs-12">
+                <label for="">产品名称：</label>
+                <input type="text" ng-model="productlistform.name">
+            </div>
+            <div class="col-md-4 col-sm-6 col-xs-12">
+                <label for="">型号：</label>
+                <input type="text" ng-model="productlistform.model">
+            </div>
+            <div class="col-md-4 col-sm-6 col-xs-12">
+                <label for="">供应商：</label>
+                <input type="text" ng-model="productlistform.supplier">
+            </div>
+        </div>
+        <div class="inputdiv">
+            <div class="col-md-4 col-sm-6 col-xs-12">
+                <label for="">品牌：</label>
+                <select ng-model="productlistform.brand" ng-options="brand.dictdata_name as brand.dictdata_name for brand in brandList">
+
+                </select>
+            </div>
+            <div class="col-md-7 col-sm-6 col-xs-12">
+                <label for="">录入时间：</label>
+                <input type="text" class="form-control" datetimepicker ng-model="productlistform.startTime" options="dateSOptions" style="display:inline-block;width: 200px">
+                &nbsp;至&nbsp;
+                <input type="text" class="form-control" datetimepicker ng-model="productlistform.endTime" options="dateEOptions" style="display:inline-block;width: 200px">
+            </div>
+             <div class="col-md-1 col-sm-6 col-xs-12">
+                <button class="mybtn" ng-click="productSearch()">查询</button>
+            </div>
+        </div>
+        
+    </div>
+    <div class="main-tab">
+        <div class="addbtn">
+            <button class="mybtn " ui-sref="product.add">新增产品</button>
+            <div class="totallDiv pull-right">共 {{productList.TotalItems || '0'}} 个产品</div>
+        </div>
+        <table class="mytab table table-striped table-bordered ">
+            <thead>
+            <th>序号</th>
+            <th>产品名称</th>
+            <th>万睿型号</th>
+            <th>默认供应商</th>
+            <th>品牌</th>
+            <th>产地</th>
+            <th>单位</th>
+            <th>正式/临时</th>
+            <th>单价(元)</th>
+            <th>交货日期</th>
+            <th>创建人</th>
+            <th>创建日期</th>
+            <th style="width:130px;">操作</th>
+            </thead>
+            <tbody>
+             <tr ng-if="productList.TotalItems == 0"><td colspan="13">暂无查询结果</td></tr>
+            <tr ng-repeat="product in productList.Items track by $index">
+                <td>{{product.code || '-'}}</td>
+                <td>{{product.name || '-'}}</td>
+                <td>{{product.model || '-'}}</td>
+                <td>{{product.SupplierName  || '-'}}</td>
+                <td>{{product.BrandName || '-'}}</td>
+                <td>{{product.AreaName || '-'}}</td>
+                <td>{{product.UnitName || '-'}}</td>
+                <td>{{product.type == '0' ? "正式" : "临时"}}</td>
+                <td>{{product.price || '-'}}</td>
+                <td>{{(product.delivery_date | date:'yyyy-MM-dd')  || '-'}}</td>
+                <td>{{product.CreatorName || '-'}}</td>
+                <td>{{(product.create_date | date:'yyyy-MM-dd')  || '-'}}</td>
+                <td><a ui-sref="product.update({id:product.id})">修改</a>&nbsp;&nbsp;
+                <a ui-sref="product.supplier({id:product.id})">维护供应商</a></td>
+            </tr>
+            
+
+            </tbody>
+        </table>
+        <page total-page="totalpage" current-page="current_page" get-data="getData()"></page>
+    </div>
+</div>
+
+<div ng-show="loading" class="loading-box">
+    <div class="spinner">
+        <div class="rect1"></div>
+        <div class="rect2"></div>
+        <div class="rect3"></div>
+        <div class="rect4"></div>
+        <div class="rect5"></div>
+    </div>
+</div>

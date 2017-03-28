@@ -1,0 +1,146 @@
+<div class="main-txt">
+    <div class="main-tip">
+        <span class="fa fa-thumb-tack"></span>新增项目(配单)
+    </div>
+    <div class="main-tab">
+        <div class="inputdiv">
+            <div class="col-md-4 col-sm-6 col-xs-12">
+                <label for="">项目名称* ：</label>
+                <input type="text" ng-model="projectAform.name" disabled>
+            </div>
+            <div class="col-md-4 col-sm-6 col-xs-12">
+                <label for="">项目负责人* ：</label>
+                <input type="text" ng-model="projectAform.charger" disabled> 
+            </div>
+        </div>
+        <div class="inputdiv">
+            <div class="col-md-4 col-sm-6 col-xs-12">
+                <label for="">建筑面积* ：</label>
+                <input type="text" ng-model="projectAform.area" disabled>
+            </div>
+            <div class="col-md-7 col-sm-6 col-xs-12">
+                <label for="">项目地址：</label>
+                <input type="text" ng-model="projectAform.address" disabled>
+            </div>
+        </div>
+        <div class="inputdiv">
+            <div class="col-md-4 col-sm-6 col-xs-12">
+                <label for="">城市* ：</label>
+                <input type="text" ng-model="projectAform.city"  disabled>
+            </div>
+            <div class="col-md-4 col-sm-6 col-xs-12">
+                <label for="">项目类型：</label>
+                <input type="text" ng-model="projectAform.projectType"  disabled>
+            </div>
+        </div>
+        <div class="inputdiv">
+            <div class="col-md-4 col-sm-6 col-xs-12">
+                <label for="">方案：</label>
+                <input type="text" ng-model="projectAform.projectPlan"  disabled>
+            </div>
+            <div class="col-md-4 col-sm-6 col-xs-12">
+                <label for="">是否默认：</label>
+                <input class="rad" type="radio" name="isdefault"value = '1' checked= checked ng-model="projectAform.iscancel " disabled>是
+                <input class="rad" type="radio" name="isdefault" value = '0' ng-model="projectAform.iscancel" disabled>否
+            </div>
+        </div>
+        <div class="inputdiv">
+            <div class="col-md-4 col-sm-6 col-xs-12">
+                <label for="">配电房：</label>
+                <input type="text" ng-model="projectAform.device1"  disabled style="width: 50%;">
+            </div>
+            <div class="col-md-2 col-sm-6 col-xs-12">
+                <label for="" style="width: 70px;margin-left: -55px;">数量：</label>
+                <input type="text" ng-model="projectAform.num1" disabled >
+            </div>
+            <div class="col-md-4 col-sm-6 col-xs-12">
+                <label for="">水泵房：</label>
+               <input type="text" ng-model="projectAform.device2"  disabled style="width: 50%;">
+
+            </div>
+            <div class="col-md-2 col-sm-6 col-xs-12">
+                <label for="" style="width: 70px;margin-left: -55px;">数量：</label>
+                <input type="text" ng-model="projectAform.num2" disabled>
+            </div>
+        </div>
+        <div class="inputdiv">
+            <div class="col-md-4 col-sm-6 col-xs-12">
+                <label for="">配电柜：</label>
+                <input type="text" ng-model="projectAform.device3"  disabled style="width: 50%;">
+
+            </div>
+            <div class="col-md-2 col-sm-6 col-xs-12">
+                <label for="" style="width: 70px;margin-left: -55px;">数量：</label>
+                <input type="text" ng-model="projectAform.num3" disabled>
+            </div>
+            <div class="col-md-4 col-sm-6 col-xs-12">
+                <label for="">水泵：</label>
+                <input type="text" ng-model="projectAform.device4"  disabled style="width: 50%;">
+
+            </div>
+            <div class="col-md-2 col-sm-6 col-xs-12">
+                <label for="" style="width: 70px;margin-left: -55px;">数量：</label>
+                <input type="text" ng-model="projectAform.num4" disabled>
+            </div>
+        </div>
+        <div class="inputdiv">
+            <div class="col-md-4 col-sm-6 col-xs-12">
+                <label for="">水池：</label>
+                <input type="text" ng-model="projectAform.device5"  disabled style="width: 50%;">
+
+            </div>
+            <div class="col-md-2 col-sm-6 col-xs-12">
+                <label for="" style="width: 70px;margin-left: -55px;">数量：</label>
+                <input type="text" ng-model="projectAform.num5" disabled>
+            </div>
+        </div>
+        <div class="inputdiv" style="margin-top: 30px;">
+            <div class="col-md-7 col-sm-6 col-xs-12">
+                <button class="mybtn" ng-click="createList()">生成默认清单</button>
+            </div>
+           <div class="col-md-3 col-sm-6 col-xs-12">
+                <label for="">系数设置：</label>
+                <input type="text" ng-model="projectAform.factor" style="width:30%;">
+            </div>
+            <div class="col-md-2 col-sm-6 col-xs-12">
+                <button class="mybtn" ng-click="setFactor()" ng-class="{'hideactive': hideButton}" ng-disabled="hideButton" >设置</button>
+                <button class="mybtn" ng-click="reSetFactor()" ng-class="{'hideactive': !hideButton}" ng-disabled="!hideButton" >重置</button>
+            </div>
+        </div>
+        <div class="tablist">
+            <table class="mytab table table-striped table-bordered ">
+                <thead>
+                <th>序号</th>
+                <th>产品名称</th>
+                <th>万睿型号</th>
+                <th>品牌</th>
+                <th>产地</th>
+                <th>单位</th>
+                <th>单价(元)</th>
+                <th>数量</th>
+                <th>操作</th>
+                </thead>
+                <tbody>
+                <tr ng-if="generateListId == ''"><td colspan="9">暂无关联产品</td></tr>
+                <tr ng-repeat="generate in generateListId track by $index">
+                    <td>{{generate.code}}</td>
+                    <td>{{generate.name || '-'}}</td>
+                    <td>{{generate.model || '-'}}</td>
+                    <td>{{generate.BrandName || '-'}}</td>
+                    <td>{{generate.area || '-'}}</td>
+                    <td>{{generate.UnitName || '-'}}</td>
+                    <td><input type="text"class="price" ng-model="generate.Price"></td>
+                    <td><input type="text" ng-model="generate.Quantity"></td>
+                    <td><span class="fa fa-close" ng-click="delSelection(generate.ProductID)"></span></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="inputdiv">
+            <div class="col-md-4 col-md-offset-4 ">
+                <button class="mybtn" ng-click="commitData()">保存配单</button>
+            </div>
+
+        </div>
+    </div>
+</div>

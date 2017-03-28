@@ -1,0 +1,73 @@
+﻿<div class="main-txt">
+    <div class="main-tip">
+        <span class="fa fa-thumb-tack"></span>项目列表
+    </div>
+    <div class="main-tab">
+        <div class="addbtn">
+            <button class="mybtn " ui-sref="project.add">新增项目</button>
+            <div class="totallDiv pull-right">共 {{projectList.TotalItems || '0'}} 个项目</div>
+        </div>
+        <table class="mytab table table-striped table-bordered ">
+            <thead>
+            <th>项目名称</th>
+            <th>项目编号</th>
+            <th>城市</th>
+            <th>项目类型</th>
+            <th>产品类型</th>
+            <th>创建人</th>
+            <th>创建日期</th>
+            <th>修改人</th>
+            <th>修改日期</th>
+            <th style="width:140px;">操作</th>
+            </thead>
+            <tbody>
+            <tr ng-if="projectList.TotalItems == 0"><td colspan="10">暂无查询结果</td></tr>
+            <tr ng-repeat="project in projectList.Items track by $index">
+                <td>{{project.project_name || '-'}}</td>
+                <td>{{project.project_code || '-'}}</td>
+                <td>{{project.CityName || '-'}}</td>
+                <td>{{project.Project_TypeName || '-'}}</td>
+                <td>{{project.Product_TypeName || '-'}}</td>
+                <td>{{project.CreatorName || '-'}}</td>
+                <td>{{(project.create_date | date:'yyyy-MM-dd') || '-'}}</td>
+                <td>{{project.ModifyName || '-'}}</td>
+                <td>{{(project.modify_date | date:'yyyy-MM-dd') || '-'}}</td>
+                <td><a ui-sref="project.update({id:project.ID})">修改</a>&nbsp;&nbsp;
+                <a ui-sref="project.inventory({id:project.ID})">配单</a>&nbsp;&nbsp;
+                <p style="display: inline-block;cursor: pointer;color: #4972fa;"data-toggle="modal" data-target=".bs-example-modal-sm" ng-click="getId(project.ID)">导出</p>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+       <page total-page="totalpage" current-page="current_page" get-data="getData()"></page>
+    </div>
+</div>
+
+<div ng-show="loading" class="loading-box">
+    <div class="spinner">
+        <div class="rect1"></div>
+        <div class="rect2"></div>
+        <div class="rect3"></div>
+        <div class="rect4"></div>
+        <div class="rect5"></div>
+    </div>
+</div>
+
+<div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+  <div class="modal-dialog modal-sm" role="document">
+    <div class="modal-content" style="margin-top: 200px;">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="myModalLabel">文件导出</h4>
+        </div>
+        <div class="modal-body">
+            <input type="radio" vaule="0"  name="num" id='0'  ng-checked="isSelected(0)" ng-click="updateSelection($event,0)">  下载项目设备清单<br><br>
+            <input type="radio" vaule="1" name="num" id='1'  ng-checked="isSelected(1)" ng-click="updateSelection($event,1)">  下载项目方案<br><br>
+            <input type="radio" vaule="2" name="num" id='2'  ng-checked="isSelected(2)" ng-click="updateSelection($event,2)">  打包下载项目方案和设备清单<br><br>
+        </div>
+        <div class="modal-footer">
+            <!--<button type="button" class="btn btn-default" data-dismiss="modal"></button>-->
+            <button type="button" class="mybtn" ng-click="export()">导出</button>
+        </div>
+  </div>
+</div>

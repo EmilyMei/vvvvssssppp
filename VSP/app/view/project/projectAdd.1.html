@@ -1,0 +1,219 @@
+<div class="main-txt">
+    <div class="main-tip">
+        <span class="fa fa-thumb-tack"></span>新增项目(配单)
+    </div>
+    <div class="main-tab">
+        <div class="inputdiv">
+            <div class="col-md-4 col-sm-6 col-xs-12">
+                <label for="">项目名称* ：</label>
+                <input type="text" ng-model="projectAform.name">
+            </div>
+            <div class="col-md-4 col-sm-6 col-xs-12">
+                <label for="">项目负责人* ：</label>
+                <input type="text" ng-model="projectAform.charger">
+            </div>
+            <div class="col-md-1  col-sm-6 col-xs-12">
+                <button class="mybtn" ng-click="projectAdd()">保存</button>
+            </div>
+        </div>
+        <div class="inputdiv">
+            <div class="col-md-4 col-sm-6 col-xs-12">
+                <label for="">建筑面积* ：</label>
+                <input type="text" ng-model="projectAform.area">
+            </div>
+            <div class="col-md-7 col-sm-6 col-xs-12">
+                <label for="">项目地址：</label>
+                <input type="text" ng-model="projectAform.address">
+            </div>
+        </div>
+        <div class="inputdiv">
+            <div class="col-md-4 col-sm-6 col-xs-12">
+                <label for="">城市* ：</label>
+                <select ng-model="projectAform.city" ng-options="city.ID as city.dictdata_name for city in cityList">
+
+                </select>
+            </div>
+            <div class="col-md-4 col-sm-6 col-xs-12">
+                <label for="">项目类型：</label>
+                <select ng-model="projectAform.projectType" ng-options="projectType.ID as projectType.dictdata_name for projectType in ProgmType">
+
+                </select>
+            </div>
+        </div>
+        <div class="inputdiv">
+            <div class="col-md-4 col-sm-6 col-xs-12">
+                <label for="">方案：</label>
+                <select ng-model="projectAform.projectPlan" ng-options="projectPlan.ID as projectPlan.PlanName for projectPlan in planSearchList">
+
+                </select>
+            </div>
+            <div class="col-md-4 col-sm-6 col-xs-12">
+                <label for="">是否默认：</label>
+                <input class="rad" type="radio" name="isdefault"value = '1' checked= checked ng-model="projectAform.isdefault">是
+                <input class="rad" type="radio" name="isdefault" value = '0' ng-model="projectAform.isdefault">否
+            </div>
+        </div>
+        <div class="inputdiv">
+            <div class="col-md-4 col-sm-6 col-xs-12">
+                <label for="">配电房：</label>
+                <input type="text" ng-model="projectAform.device1">
+            </div>
+            <div class="col-md-4 col-sm-6 col-xs-12">
+                <label for="">水泵房：</label>
+                <input type="text" ng-model="projectAform.device2">
+            </div>
+        </div>
+        <div class="inputdiv">
+            <div class="col-md-4 col-sm-6 col-xs-12">
+                <label for="">配电柜：</label>
+                <input type="text" ng-model="projectAform.device3">
+            </div>
+            <div class="col-md-4 col-sm-6 col-xs-12">
+                <label for="">水泵：</label>
+                <input type="text" ng-model="projectAform.device4">
+            </div>
+        </div>
+        <div class="inputdiv">
+            <div class="col-md-4 col-sm-6 col-xs-12">
+                <label for="">水池：</label>
+                <input type="text" ng-model="projectAform.device5">
+            </div>
+            <div class="col-md-4 col-sm-6 col-xs-12 ">
+                <button class="mybtn" ng-click="generate()">生成</button>
+            </div>
+        </div>
+        <div class="tablist">
+            <table class="mytab table table-striped table-bordered ">
+                <thead>
+                <th>序号</th>
+                <th>产品名称</th>
+                <th>万睿型号</th>
+                <th>默认供应商</th>
+                <th>品牌</th>
+                <th>产地</th>
+                <th>单位</th>
+                <th>数量</th>
+                <th>单价</th>
+                <th>交货日期</th>
+                <th>操作</th>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>01</td>
+                    <td>深圳</td>
+                    <td>小鱼儿</td>
+                    <td>女</td>
+                    <td>123456</td>
+                    <td>122345@qq.com</td>
+                    <td>12345678901</td>
+                    <td><input type="text" value="1"></td>
+                    <td><input type="text" value="1"></td>
+                    <td>2017-02-22</td>
+                    <td><span class="fa fa-close"></span></td>
+                </tr>
+                <tr>
+                    <td>01</td>
+                    <td>深圳</td>
+                    <td>小鱼儿</td>
+                    <td>女</td>
+                    <td>123456</td>
+                    <td>122345@qq.com</td>
+                    <td>12345678901</td>
+                    <td><input type="text" value="1"></td>
+                    <td><input type="text" value="1"></td>
+                    <td>2017-02-22</td>
+                    <td><span class="fa fa-close"></span></td>
+                </tr>
+                <tr>
+                    <td>01</td>
+                    <td>深圳</td>
+                    <td>小鱼儿</td>
+                    <td>女</td>
+                    <td>123456</td>
+                    <td>122345@qq.com</td>
+                    <td>12345678901</td>
+                    <td><input type="text" value="1"></td>
+                    <td><input type="text" value="1"></td>
+                    <td>2017-02-22</td>
+                    <td><span class="fa fa-close"></span></td>
+                </tr>
+                <tr>
+                    <td>01</td>
+                    <td>深圳</td>
+                    <td>小鱼儿</td>
+                    <td>女</td>
+                    <td>123456</td>
+                    <td>122345@qq.com</td>
+                    <td>12345678901</td>
+                    <td><input type="text" value="1"></td>
+                    <td><input type="text" value="1"></td>
+                    <td>2017-02-22</td>
+                    <td><span class="fa fa-close"></span></td>
+                </tr>
+                <tr>
+                    <td>01</td>
+                    <td>深圳</td>
+                    <td>小鱼儿</td>
+                    <td>女</td>
+                    <td>123456</td>
+                    <td>122345@qq.com</td>
+                    <td>12345678901</td>
+                    <td><input type="text" value="1"></td>
+                    <td><input type="text" value="1"></td>
+                    <td>2017-02-22</td>
+                    <td><span class="fa fa-close"></span></td>
+                </tr>
+                <tr>
+                    <td>01</td>
+                    <td>深圳</td>
+                    <td>小鱼儿</td>
+                    <td>女</td>
+                    <td>123456</td>
+                    <td>122345@qq.com</td>
+                    <td>12345678901</td>
+                    <td><input type="text" value="1"></td>
+                    <td><input type="text" value="1"></td>
+                    <td>2017-02-22</td>
+                    <td><span class="fa fa-close"></span></td>
+                </tr>
+                <tr>
+                    <td>01</td>
+                    <td>深圳</td>
+                    <td>小鱼儿</td>
+                    <td>女</td>
+                    <td>123456</td>
+                    <td>122345@qq.com</td>
+                    <td>12345678901</td>
+                    <td><input type="text" value="1"></td>
+                    <td><input type="text" value="1"></td>
+                    <td>2017-02-22</td>
+                    <td><span class="fa fa-close"></span></td>
+                </tr>
+                <tr>
+                    <td>01</td>
+                    <td>深圳</td>
+                    <td>小鱼儿</td>
+                    <td>女</td>
+                    <td>123456</td>
+                    <td>122345@qq.com</td>
+                    <td>12345678901</td>
+                    <td><input type="text" value="1"></td>
+                    <td><input type="text" value="1"></td>
+                    <td>2017-02-22</td>
+                    <td><span class="fa fa-close"></span></td>
+                </tr>
+
+                </tbody>
+            </table>
+            <div class="page pull-right">
+                <ul  style="margin:0px;">
+                    <li><button class="mybtn" id="first-btn">首页</button></li>
+                    <li><button class="mybtn" id="prev-btn">上一页</button></li>
+                    <li><input class="form-control" required="required" type="text" id="currentPage" value="1"></li>
+                    <li><div class="txt">/<span id="totalpage">2</span>页</div></li>
+                    <li><button class="mybtn " id="next-btn">下一页</button></li>
+                    <li><button class="mybtn " id="last-btn">尾页</button></li></ul>
+            </div>
+        </div>
+    </div>
+</div>

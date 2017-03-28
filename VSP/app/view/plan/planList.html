@@ -1,0 +1,47 @@
+<div class="main-txt">
+    <div class="main-tip">
+        <span class="fa fa-thumb-tack"></span>方案列表
+    </div>
+    <div class="main-tab">
+        <div class="addbtn">
+            <button class="mybtn " ui-sref="plan.add">新增方案</button>
+            <div class="totallDiv pull-right">共 {{planList.TotalItems || '0'}} 个方案</div>
+        </div>
+        <table class="mytab table table-striped table-bordered ">
+            <thead>
+            <th>序号</th>
+            <th>方案名称</th>
+            <th>是否默认</th>
+            <th>创建人</th>
+            <th>创建日期</th>
+            <th>修改人</th>
+            <th>修改日期</th>
+            <th style="width:80px;">操作</th>
+            </thead>
+            <tbody>
+            <tr ng-repeat="plan in planList.Items track by $index">
+                <td>{{$index + 1}}</td>
+                <td>{{plan.PlanName || '-'}}</td>
+                <td>{{plan.isdefault == '1' ? "是" : "否"}}</td>
+                <td>{{plan.CreatorName || '-'}}</td>
+                <td>{{(plan.create_date | date:'yyyy-MM-dd') || '-'}}</td>
+                <td>{{plan.ModifyName || '-'}}</td>
+                <td>{{(plan.modify_date | date:'yyyy-MM-dd') || '-'}}</td>
+                <td><a ui-sref="plan.update({id:plan.ID})">修改</a></td>
+            </tr>
+            <tr ng-if="planList.TotalItems == 0"><td colspan="8">暂无查询结果</td></tr>
+            </tbody>
+        </table>
+       <page total-page="totalpage" current-page="current_page" get-data="getData()"></page>
+    </div>
+</div>
+
+<div ng-show="loading" class="loading-box">
+    <div class="spinner">
+        <div class="rect1"></div>
+        <div class="rect2"></div>
+        <div class="rect3"></div>
+        <div class="rect4"></div>
+        <div class="rect5"></div>
+    </div>
+</div>

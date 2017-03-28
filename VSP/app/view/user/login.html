@@ -1,0 +1,41 @@
+<div class="lbg">
+    <div class="login-main ">
+        <div class="login-inp">
+            <div class="center-container" >
+                <!--header-->
+                <div class="header-w3l" >
+                    <div class="an"></div>
+                    <h1 >VSP&nbsp;&nbsp;业务技术支持系统</h1>
+                </div>
+                <!--//header-->
+                <div class="main-content-agile" >
+                    <div class="sub-main-w3" >
+                        <div class="wthree-pro" >
+                            <h2>欢 迎 登 录</h2>
+                        </div>
+                            <input ng-model="form.username" placeholder="Username or E-mail" name="Name" class="user" type="text" required="">
+                            <span class="icon1"><i class="fa fa-user" aria-hidden="true"></i></span><br><br>
+                            <input  ng-model="form.pwd" placeholder="Password" name="Password" class="pass" type="password" required="">
+                            <span class="icon2"><i class="fa fa-unlock" aria-hidden="true"></i></span><br>
+                        <div class="tipDiv" >
+                            <div class="tip" ng-bind="tip" ng-hide="isHide"></div>
+                        </div>
+                        <div class="sub-w3l">
+                                <div class="right-w3l">
+                                    <input type="submit" value="Login" ng-click="login()">
+                                </div>
+                            </div>
+
+                    </div>
+                </div>
+                <!--//main-->
+
+                <!--footer-->
+                <div class="footer" >
+                    <p>&copy; 2017 版权所有 深圳市万睿智能科技有限公司 粤ICP备14036177号</p>
+                </div>
+                <!--//footer-->
+            </div>
+        </div>
+    </div>
+</div>

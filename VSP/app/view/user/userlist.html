@@ -1,0 +1,108 @@
+<div class="main-txt">
+    <div class="main-tip">
+        <span class="fa fa-thumb-tack"></span>用户列表
+    </div>
+    <div class="main-topnav">
+        <div class="inputdiv">
+            <div class="col-md-4 col-sm-6 col-xs-12">
+                <label for="">姓名：</label>
+                <input type="text" ng-model="userlistform.name">
+            </div>
+            <div class="col-md-4 col-sm-6 col-xs-12">
+                <label for="">城市：</label>
+                <select ng-model="userlistform.city" ng-options="city.dictdata_name as city.dictdata_name for city in cityList">
+
+                </select>
+            </div>
+            <div class="col-md-3 col-sm-6 col-xs-12">
+                <button class="mybtn" ng-click="getUserListTab()">查询</button>
+            </div>
+        </div>
+        <div class="inputdiv">
+            <div class="col-md-4 col-sm-6 col-xs-12">
+                <label for="">角色：</label>
+                <input type="text" ng-model="userlistform.role">
+            </div>
+            <div class="col-md-4 col-sm-6 col-xs-12">
+                <label for="">是否启用：</label>
+                <input class="rad" type="radio" name="liststate"value = '1' checked= checked ng-model="userlistform.state">是
+                <input class="rad" type="radio" name="liststate" value = '0' ng-model="userlistform.state">否
+            </div>
+        </div>
+    </div>
+    <div class="main-tab">
+        <div class="addbtn">
+            <button class="mybtn " ui-sref="user.add">新增用户</button>
+            <div class="totallDiv pull-right">共 {{userList.TotalItems || '0'}} 个用户</div>
+         </div>
+        <table class="mytab table table-striped table-bordered ">
+            <thead>
+            <th>序号</th>
+            <th>城市</th>
+            <th>姓名</th>
+            <th>性别</th>
+            <th>账号</th>
+            <th>邮箱</th>
+            <th>电话</th>
+            <th>角色</th>
+            <th>备注</th>
+            <th>是否启用</th>
+            <th style="width:130px;">操作</th>
+            </thead>
+            <tbody >
+            <tr ng-repeat="user in userList.Items track by $index">
+                <td>{{$index + 1}}</td>
+                <td>{{user.CityName || '-'}}</td>
+                <td>{{user.name || '-'}}</td>
+                <td>{{user.sex == "0" ? '男' : '女'}}</td>
+                <td>{{user.remark || '-'}}</td>
+                <td>{{user.email || '-'}}</td>
+                <td>{{user.phone || '-'}}</td>
+                <td>{{user.RoleName || '-'}}</td>
+                <td>{{user.remark || '-'}}</td>
+                <td>{{user.state == "1" ? '是' : '否'}}</td>
+                <td><a ui-sref="user.update({id:user.id})">修改</a>&nbsp;&nbsp;
+                    <p style="display: inline-block;cursor: pointer;color: #4972fa;"data-toggle="modal" data-target=".bs-example-modal-sm" ng-click="setOpen(user.id)">角色设置</p>
+                    </td>
+            </tr>
+            <tr ng-if="userList.TotalItems == 0"><td colspan="11">暂无查询结果</td></tr>
+            </tbody>
+        </table>
+        <page total-page="totalpage" current-page="current_page" get-data="getData()"></page>
+    </div>
+</div>
+
+
+<div ng-show="loading" class="loading-box">
+    <div class="spinner">
+        <div class="rect1"></div>
+        <div class="rect2"></div>
+        <div class="rect3"></div>
+        <div class="rect4"></div>
+        <div class="rect5"></div>
+    </div>
+</div>
+
+<div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+  <div class="modal-dialog modal-sm" role="document">
+    <div class="modal-content" style="margin-top: 200px;">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="myModalLabel" >角色设置</h4>
+        </div>
+        <div class="modal-body">
+            <!--<div ng-repeat="roleType in userRoleListById track by $index">
+                <input type="checkbox" value="{{roleType.id}}" ng-change='checkRule(roleType.id)' ng-model='value.url'ng-click="roleType.IsCheck" style="margin-right: 10px;vertical-align: middle;margin-bottom: 10px;">{{roleType.role_name}}
+            </div>-->
+            <div class="rolelist">
+                <ul class="list">
+                    <setrole ng-repeat="v in userRoleListById" list='userRoleListById' value = "v">
+                    </setrole>
+                </ul>
+            </div>
+        <div class="modal-footer">
+            <!--<button type="button" class="btn btn-default" data-dismiss="modal"></button>-->
+            <button type="button" class="mybtn" data-dismiss="modal" ng-click="setSave() ">保存</button>
+        </div>
+  </div>
+</div>

@@ -1,0 +1,36 @@
+<div class="main-top">
+    <div class="main-top-l">
+        <div class="logo"><img src="images/LOGO.png" alt=""></div>
+        <div class="web">业务管理平台</div>
+    </div>
+    <div class="main-top-r">
+        <ul>
+            <li class="topicon"><span class="fa fa-tags"></span></li>
+            <li ng-bind="CityName"></li>
+            <li class="topicon"><span class="fa fa-envira"></span></li>
+            <li class="username" ng-bind="userName"></li>
+            <li><a ui-sref="login" ng-click="toLoginOut()">退出</a></li>
+        </ul>
+    </div>
+</div>
+<div class="main-center">
+    <div class="main-center-left">
+        <ul class="leftnav">
+            <!--<li></li>-->
+            <li auto-active="active" ng-if="authList.auth1"><a ui-sref="user.list"><span class="fa fa-address-book-o"></span>用户管理</a></li>
+            <li auto-active="active" ng-if="authList.auth2"><a ui-sref="role.list"><span class="fa fa-user-o"></span>角色管理</a></li>
+            <li auto-active="active" ng-if="authList.auth3"><a ui-sref="product.list"><span class="fa fa-th-large"></span>产品管理</a></li>
+            <li auto-active="active" ng-if="authList.auth4"><a ui-sref="plan.list"><span class="fa fa-file-word-o"></span>方案管理</a></li>
+            <li auto-active="active" ng-if="authList.auth5"><a ui-sref="device.list"><span class="fa fa-sitemap"></span>集成设备管理</a></li>
+            <li auto-active="active" ng-if="authList.auth6"><a ui-sref="project.list"><span class="fa fa-list-alt"></span>项目管理</a></li>
+            <li auto-active="active" ng-if="authList.auth7"><a ui-sref="log.list"><span class="fa fa-pencil-square-o"></span>日志管理</a></li>
+        </ul>
+    </div>
+    <div class="main-center-right">
+        <div class="container">
+            <div class="row">
+                <div ui-view ></div>
+            </div>
+        </div>
+    </div>
+</div>

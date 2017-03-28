@@ -1,0 +1,101 @@
+﻿<div class="main-txt">
+    <div class="main-tip">
+        <span class="fa fa-thumb-tack"></span>供应商列表
+    </div>
+    <div class="main-tab">
+        <div class="addbtn">
+            <button class="mybtn " data-toggle="modal" data-target="#myModal" ng-click="getsupplierList()">新增供应商</button>
+            <button class="mybtn pull-right" ng-click="commitData()" >保存</button>
+        </div>
+        <table class="mytab table table-striped table-bordered ">
+            <thead>
+            <th>序号</th>
+            <th>供应商名称</th>
+            <th>型号</th>
+            <th>产品等级</th>
+            <th>单价(元)</th>
+            <th style="width:150px;">是否默认</th>
+            <th style="width:150px;">是否取消</th>
+            </thead>
+            <tbody>
+             <tr ng-if="productList == ''"><td colspan="7">暂无查询结果</td></tr>
+            <tr ng-repeat="supplier in supplierList track by $index">
+                <td>{{$index + 1}}</td>
+                <td>{{supplier.SupplierName || '-'}}</td>
+                <td><input type="text" class="models" ng-model="supplier.ori_model"></td>
+                <td><input type="text" class="grade" ng-model="supplier.Grade"></td>
+                <td><input type="text" class="price" ng-model="supplier.ori_price"></td>
+                <td>
+                    <input class="rade" type="radio" name="{{$index + 1}}"value="0" ng-model="supplier.isdefault">否
+                    <input class="rade" type="radio" name="{{$index + 1}}"  value="1" ng-model="supplier.isdefault">是
+                 </td>
+                <td>
+                    <input class="rade" type="radio" name="{{$index - 1}}" value="0" ng-model="supplier.iscancel">否
+                    <input class="rade" type="radio" name="{{$index - 1}}" value="1" ng-model="supplier.iscancel">是
+                    </td>
+            </tr>
+            
+
+            </tbody>
+        </table>
+    
+    </div>
+</div>
+
+<div ng-show="loading" class="loading-box">
+    <div class="spinner">
+        <div class="rect1"></div>
+        <div class="rect2"></div>
+        <div class="rect3"></div>
+        <div class="rect4"></div>
+        <div class="rect5"></div>
+    </div>
+</div>
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content" style="width:1100px;margin-left: -250px;margin-bottom:10px;">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">关联产品列表</h4>
+      </div>
+      <div class="modal-body">
+          <div style="border:1px solid #fff;margin-bottom: 40px;">
+            <table class="mytabmodel table table-striped table-bordered ">
+            <thead>
+            <th>序号</th>
+            <th>产品名称</th>
+            <th>万睿型号</th>
+            <th>默认供应商</th>
+            <th>品牌</th>
+            <th>产地</th>
+            <th>单位</th>
+            <th style="width:130px;">操作</th>
+            </thead>
+            <tbody>
+             <tr ng-if="getAllSuppliersList == ''"><td colspan="7">暂无关联供应商</td></tr>
+            <tr ng-repeat="Supplier in getAllSuppliersList track by $index">
+                <td>{{$index + 1}}</td>
+                <td>{{Supplier.name || '-'}}</td>
+                <td>{{Supplier.address || '-'}}</td>
+                <td>{{Supplier.contactor || '-'}}</td>
+                <td>{{Supplier.mail  || '-'}}</td>
+                <td>{{Supplier.phone || '-'}}</td>
+                <td>{{Supplier.fax || '-'}}</td>
+                <td>
+                    <input type="checkbox" class="chb" id={{Supplier.ID}}  ng-checked="isSelected(Supplier.ID)" ng-click="updateSelection($event,Supplier.ID)">
+                </td>
+            </tr>
+        
+            </tbody>
+        </table>
+        <page total-page="totalpage" current-page="current_page" get-data="getData()"></page>
+          </div>
+          
+      </div>
+      <div class="modal-footer" style="text-align: center;">
+        <!--<button type="button" class="btn btn-default" data-dismiss="modal"></button>-->
+        <button type="button" class="mybtn" ng-click="addOk()" data-dismiss="modal">确定</button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,73 @@
+<div class="main-txt">
+    <div class="main-tip">
+        <span class="fa fa-thumb-tack"></span>修改用户
+    </div>
+    <div class="main-tab">
+        <div class="inputdiv">
+            <div class="col-md-4 col-sm-6 col-xs-12">
+                <label for="">城市 *：</label>
+                <select ng-model="userUfrom.city" ng-options="city.ID as city.dictdata_name for city in cityList">
+
+                </select>
+            </div>
+            <div class="col-md-4 col-sm-6 col-xs-12">
+                <label for="">姓名 *：</label>
+                <input type="text" ng-model="userUfrom.name" required disabled>
+            </div>
+        </div>
+        <div class="inputdiv">
+            <div class="col-md-4 col-sm-6 col-xs-12">
+                <label for="">性别 *：</label>
+                <input class="rad" type="radio" name="sex"value = '0' checked= checked ng-model="userUfrom.sex">男
+                <input class="rad" type="radio" name="sex" value = '1' ng-model="userUfrom.sex">女
+            </div>
+            <div class="col-md-4 col-sm-6 col-xs-12">
+                <label for="">账号 *：</label>
+                <input type="text" ng-model="userUfrom.account" required disabled>
+            </div>
+        </div>
+        <div class="inputdiv">
+            <div class="col-md-4 col-sm-6 col-xs-12">
+                <label for="">邮箱 ：</label>
+                <input type="email" ng-model="userUfrom.email" name="email">
+            </div>
+            <div class="col-md-4 col-sm-6 col-xs-12">
+                <label for="">电话号码 ：</label>
+                <input type="phone" ng-model="userUfrom.phone">
+            </div>
+        </div>
+        <div class="inputdiv">
+            <!--<div class="col-md-4 col-sm-6 col-xs-12">
+                <label for="">角色 ：</label>
+                <input type="text" ng-model="userUfrom.role">
+            </div>-->
+            <div class="col-md-4 col-sm-6 col-xs-12">
+                <label for="">是否启用 *：</label>
+                <input class="rad" type="radio" name="state"value = '1' checked= checked ng-model="userUfrom.state">是
+                <input class="rad" type="radio" name="state" value = '0' ng-model="userUfrom.state">否
+            </div>
+        </div>
+        <div class="inputdiv">
+            <div class="col-md-12 col-sm-6 col-xs-12">
+                <label for="">备注 ：</label>
+                <input type="text" ng-model="userUfrom.remark">
+            </div>
+        </div>
+        <div class="inputdiv">
+            <div class="col-md-4 col-md-offset-4 ">
+                <button class="mybtn" ng-click="userSave()">保存</button>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div ng-show="loading" class="loading-box">
+    <div class="spinner">
+        <div class="rect1"></div>
+        <div class="rect2"></div>
+        <div class="rect3"></div>
+        <div class="rect4"></div>
+        <div class="rect5"></div>
+    </div>
+</div>
